@@ -1,7 +1,13 @@
 
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
+import router from "./router/route.js";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
+// connection file import
+import connect from "./database/conn.js";
 
 const app = express();
 const PORT = 5000;
@@ -15,6 +21,12 @@ const dummyUser = {
   email: "user@example.com",
   password: "password123"
 };
+
+connect();
+// Routes
+app.use("/api", router);
+
+
 
 // Sign In endpoint
 app.post("/api/signin", (req, res) => {
@@ -34,3 +46,11 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+
+
+
+
+
+// password eFfv5spvg3YWkg1g
