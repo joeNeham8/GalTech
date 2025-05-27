@@ -25,6 +25,7 @@ function LoginPage({ onLogin }) {
           <input
             type="email"
             id="email"
+            placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -35,6 +36,7 @@ function LoginPage({ onLogin }) {
           <input
             type="password"
             id="password"
+            placeholder="Enter your password"
             value={password}
             onChange={(e) => setEmail(e.target.value)}
             required

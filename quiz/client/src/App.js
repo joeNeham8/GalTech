@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import LoginPage from './components/LoginPage.js';
 import HomePage from './components/HomePage.js';
 import Navbar from './components/Navbar.js';
-
+import SignIn from './components/SignIn.js';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
@@ -32,8 +32,19 @@ function App() {
             path="/"
             element={<HomePage userName={userName} />}
           />
-        </Routes>
-      </div>
+    
+        <Route
+          path="/signin"
+          element={
+            isLoggedIn ? (
+              <Navigate to="/" />
+            ) : (
+              <SignIn onSignIn={handleLogin} />
+            )
+          }/>
+     </Routes>
+     
+  </div>
     </Router>
   );
 }
