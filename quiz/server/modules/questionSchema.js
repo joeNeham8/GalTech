@@ -1,14 +1,15 @@
 import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
-const questionSchema = new mongoose.Schema({
-  questionText: { type: String, required: true },
-  options: [{ type: String, required: true }],
-  correctAnswer: { type: String, required: true },
-  category: { type: String, enum: ['General Aptitude', 'Programming'], required: true },
-  subcategory: { type: String, required: true }, // E.g., Quantitative, JavaScript
+const questionSchema = new Schema({
+  questions: { type: String},
+  options: [{ type: String  }],
+  answers: { type: String },
+  category: { type: String, enum: ['General Aptitude', 'Programming'] },
+  subcategory: { type: String }, // E.g., Quantitative, JavaScript
   difficulty: { type: String, enum: ['Easy', 'Medium', 'Hard'], default: 'Medium' },
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Question', questionSchema);
+export default mongoose.model('Question', questionSchema);
