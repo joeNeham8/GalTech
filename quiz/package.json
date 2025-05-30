@@ -1,6 +1,7 @@
 {
   "name": "quiz",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
@@ -9,5 +10,8 @@
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "mongoose": "^8.15.1"
   }
 }
