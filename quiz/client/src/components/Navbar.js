@@ -20,7 +20,7 @@ function Navbar({ userName, onLogout }) {
         <a href="/Result">Result</a>
         <a href='/Dashboard'>Dashboard</a>
         <a href='/Admin'>Admin</a>
-        <a href='/signin'>SignIn</a>
+        <a href='/Register'>Register</a>
         </div>
     </nav>
   );
