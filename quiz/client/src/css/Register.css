@@ -1,0 +1,95 @@
+/* src/components/RegistrationForm.css */
+
+.registration-container {
+  font-family: 'Inter', sans-serif;
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Soft shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registration-container h2 {
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.registration-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between form elements */
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="password"],
+.registration-form select {
+  width: 100%; /* Full width minus padding */
+  padding: 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px; /* Rounded corners for inputs/select */
+  box-sizing: border-box; /* Include padding in width */
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.registration-form input:focus,
+.registration-form select:focus {
+  outline: none;
+  border-color: #007bff; /* Highlight on focus */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.registration-form button {
+  background-color: #007bff; /* Blue button */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px; /* Rounded corners for button */
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.registration-form button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.registration-message {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.registration-message.success {
+  color: #28a745; /* Green for success */
+  background-color: #e6ffed;
+  border: 1px solid #c3e6cb;
+}
+
+.registration-message.error {
+  color: #dc3545; /* Red for error */
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .registration-container {
+    margin: 20px;
+    padding: 20px;
+  }
+}
