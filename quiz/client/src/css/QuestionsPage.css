@@ -1,0 +1,24 @@
+.questions-container {
+  padding: 20px;
+}
+.questions-header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.input-field, .select-field, .textarea-field {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+}
+.add-button, .delete-button, .back-button {
+  margin: 10px 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.questions-message {
+  color: green;
+}
+.questions-error {
+  color: red;
+}

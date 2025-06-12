@@ -6,6 +6,7 @@ import cors from 'cors';
 import userRoutes from './router/routeUser.js';
 import questionRoutes from './router/routeQuestions.js';
 import resultRoutes from './router/routeResult.js';
+import categoryRoutes from './router/routeCategory.js';
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ mongoose.connect(process.env.ATLAS_URL, {
 app.use('/api/users', userRoutes);
 app.use('/api/questions', questionRoutes);
 app.use('/api/results', resultRoutes);
+app.use('/api/categories', categoryRoutes);
 
 // Root route
 app.get('/', (req, res) => {
