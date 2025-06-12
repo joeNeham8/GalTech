@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // For navigation links
+import { Link, Outlet } from 'react-router-dom'; // For navigation links
 import '../../css/AdminLayout.css';
 //import ''; // Import the dedicated CSS file
 
@@ -14,7 +14,7 @@ function AdminLayout({ userName, userRole }) {
 
       <div className="admin-navigation-buttons">
         {/* Link to Categories Management (already exists and is admin-only) */}
-        <Link to="/CategoriesPage" className="admin-nav-button">Manage Quiz Categories</Link>
+        <Link to="/adminLayout/categories" className="admin-nav-button">Manage Quiz Categories</Link>
 
         {/* Placeholder for future admin sections */}
         <button className="admin-nav-button" onClick={() => alert('Manage Questions - Coming Soon!')}>
@@ -29,6 +29,7 @@ function AdminLayout({ userName, userRole }) {
       </div>
 
       <Link to="/" className="admin-back-button">Back to Home</Link>
+      <Outlet /> 
     </div>
   );
 }

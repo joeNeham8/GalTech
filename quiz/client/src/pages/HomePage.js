@@ -12,9 +12,9 @@ function HomePage({ userName, onNavigateToCategories }) { // Added onNavigateToC
         <button>Programming Aptitude</button>
         <button>Program-Based Questions</button>
         {/* New button to navigate to categories */}
-        <button onClick={onNavigateToCategories} style={{ backgroundColor: '#007bff', marginTop: '20px' }}>
+        {/* <button onClick={onNavigateToCategories} style={{ backgroundColor: '#007bff', marginTop: '20px' }}>
           Manage Quiz Categories
-        </button>
+        </button> */}
       </div>
     </div>
   );
