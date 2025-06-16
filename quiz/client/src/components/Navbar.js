@@ -19,8 +19,8 @@ function Navbar({ userName, onLogout }) {
         <a href="/Quiz">Quiz</a>
         <a href="/Result">Result</a>
         <a href='/Dashboard'>Dashboard</a>
-        <a href='/Admin'>Admin</a>
-        <a href='/signin'>SignIn</a>
+        <a href='/AdminLayout'>Admin</a>
+        <a href='/Register'>Register</a>
         </div>
     </nav>
   );
