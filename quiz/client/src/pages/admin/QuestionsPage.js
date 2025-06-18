@@ -23,7 +23,7 @@ function QuestionsPage({ userRole, token, onBackToCategories }) {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${API_BASE_URL}/categories/${categoryId}/questions`, {
+      const response = await fetch(`${API_BASE_URL}/questions/${categoryId}/questions`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });
@@ -52,7 +52,7 @@ function QuestionsPage({ userRole, token, onBackToCategories }) {
       return;
     }
     try {
-      const response = await fetch(`${API_BASE_URL}/categories/${categoryId}/questions`, {
+      const response = await fetch(`${API_BASE_URL}/questions/${categoryId}/questions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -17,9 +17,9 @@ function AdminLayout({ userName, userRole }) {
         <Link to="/adminLayout/categories" className="admin-nav-button">Manage Quiz Categories</Link>
 
         {/* Placeholder for future admin sections */}
-        <button className="admin-nav-button" onClick={() => alert('Manage Questions - Coming Soon!')}>
+        {/* <Link to="/adminLayout/categories/[categoryId]/questions" className="admin-nav-button" >
           Manage Questions
-        </button>
+        </Link> */}
         <button className="admin-nav-button" onClick={() => alert('View Student Attempts - Coming Soon!')}>
           View Student Attempts
         </button>

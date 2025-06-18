@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/CategoriesPage.css';
+import { useNavigate } from 'react-router-dom';
 
 
 // Define your backend API base URL
 const API_BASE_URL = 'http://localhost:5000/api'; // Ensure this matches your backend URL
+
 
 function CategoriesPage({ userRole, token, onBackToHome }) {
   const [categories, setCategories] = useState([]);
@@ -12,6 +14,7 @@ function CategoriesPage({ userRole, token, onBackToHome }) {
   const [newCategoryName, setNewCategoryName] = useState('');
   const [newCategoryDescription, setNewCategoryDescription] = useState('');
   const [message, setMessage] = useState(''); // For success/error messages after actions
+  const navigate = useNavigate();
 
   // Function to fetch categories
   const fetchCategories = async () => {
@@ -126,12 +129,15 @@ function CategoriesPage({ userRole, token, onBackToHome }) {
                 <li key={category._id} className="category-item">
                   <span>{category.name}</span>
                   {userRole === 'admin' && ( // Admin specific delete button
-                    <button
-                      onClick={() => handleDeleteCategory(category._id)}
-                      className="delete-button"
-                    >
-                      Delete
-                    </button>
+                    <div>
+                      <button onClick={() => handleDeleteCategory(category._id)}>
+                        Delete
+                      </button>
+                      <button onClick={() => navigate(`/adminLayout/categories/${category._id}/questions`)}>
+                        Manage Questions
+                      </button>
+                    </div>
+
                   )}
                 </li>
               ))}
@@ -160,7 +166,7 @@ function CategoriesPage({ userRole, token, onBackToHome }) {
         </div>
       )}
 
-      <button onClick={onBackToHome} className="back-button">Back to Home</button>
+
     </div>
   );
 }

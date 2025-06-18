@@ -69,16 +69,16 @@ function App() {
               )
             }
           />
-          {/* <Route
+          <Route
             path="/adminLayout/categories/:categoryId/questions"
             element={
               <QuestionsPage
                 userRole={userRole}
                 token={token}
-                onBackToCategories={() => navigate('/adminLayout/categories')}
+                onBackToCategories={() => Navigate('/adminLayout/categories')}
               />
             }
-          /> */}
+          />
         </Route>
 
         {/* Catch-All Route */}
