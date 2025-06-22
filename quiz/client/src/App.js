@@ -18,6 +18,8 @@ import AdminLayout from './pages/admin/AdminLayout.js';
 import CategoriesPage from './pages/admin/CategoriesPage.js';
 import QuestionsPage from './pages/admin/QuestionsPage.js';
 
+import './css/App.css';
+
 function App() {
   const [userRole, setUserRole] = useState('');
   const [token, setToken] = useState('');
