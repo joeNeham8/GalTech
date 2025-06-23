@@ -1,55 +1,45 @@
 Quiz Application
-A full-stack web application designed to provide an interactive quiz experience with user authentication, role-based access (Student vs. Admin), dynamic quiz categories, question management, and score tracking.
 
-🌟 Features
-This project implements the core functionalities of a comprehensive quiz platform:
+A full-stack web application designed to provide an interactive quiz experience with user authentication, role-based access (Student vs. Admin), dynamic quiz categories, question management, and score tracking. 
 
-User Authentication (Basic):
+⚙️ Setup Instructions
 
-User Registration (Email & Password)
+Follow these steps to get the project up and running on your local machine.
 
-User Login (Email & Password)
+Prerequisites:
 
-Role-Based Access Control (student vs. admin roles)
+Node.js (LTS version recommended)
 
-Password Hashing with bcrypt.js
+npm (comes with Node.js) or Yarn
 
-JWT-based Login Sessions
+MongoDB Atlas Account (or local MongoDB instance)
 
-Token storage in localStorage for session persistence
+Root: npm i  
 
-Protected Frontend Routes (Admin panel, Quiz, Results, Dashboard)
+concurrently (devDependency, for running client and server together)
 
-Quiz Categories Management:
+mongoose (dependency, but only needed for the server)
 
-Admin: Add, View, and Delete quiz categories.
+client:  npm i 
 
-Student: View available quiz categories.
+  express
+  mongoose
+  dotenv
+  cors
+  body-parser
+  bcrypt
+  bcryptjs
+  jsonwebtoken
+  mongodb
 
-Question Management (MCQs, Program-Based, Coding Challenge):
-
-Admin: Add, View (all or by ID), Update, and Delete Multiple Choice Questions (MCQs), Program-Based Questions (with code snippets), and Coding Challenge Questions (with sample input/output).
-
-Quiz Attempt & Scoring:
-
-Start a quiz by selecting a category.
-
-Select answers for MCQs.
-
-Submit the completed quiz.
-
-View score and a basic result summary immediately after submission.
-
-Attempt History:
-
-Save each quiz attempt with userId, quiz category, score, totalQuestions, correctAnswers, and a detailed breakdown of answersSubmitted.
-
-(Future: Dashboard view of previous attempts.)
-
-Admin Panel:
-
-Dedicated interface for administrators.
-
-Links to manage quiz categories and questions.
-
-(Future: View student attempts and scores, overall leaderboard.)
+  server: npm i 
+  
+   react
+   react-dom
+   react-router-dom
+   react-scripts
+   @testing-library/react
+   @testing-library/jest-dom
+   @testing-library/user-event
+   @testing-library/dom
+   web-vitals
