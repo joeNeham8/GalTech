@@ -1,0 +1,171 @@
+/* src/css/Result.css */
+
+.result-container {
+  font-family: var(--font-family-base);
+  max-width: 900px; /* Wider to accommodate detailed results */
+  margin: var(--space-3xl) auto;
+  padding: var(--space-2xl);
+  background-color: var(--color-background-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  text-align: center;
+  border: 1px solid var(--color-border-light);
+}
+
+.result-header {
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-xl);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.score-summary {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin: var(--space-xl) 0 var(--space-2xl) 0;
+  line-height: 1.2;
+}
+
+.score-summary strong {
+  color: var(--color-primary); /* Highlight total score */
+}
+
+.detailed-results-list {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-lg);
+  border-top: 1px solid var(--color-border-light); /* Separator for details */
+  padding-top: var(--space-lg);
+}
+
+.result-item {
+  background-color: var(--color-background-light); /* Light background for each question item */
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.result-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.result-item strong {
+  color: var(--color-text-dark);
+  font-size: var(--font-size-lg);
+  display: block; /* Ensures question text is on its own line */
+  margin-bottom: var(--space-xs);
+}
+
+.result-item p {
+  margin: var(--space-xxs) 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-medium);
+}
+
+.result-item .user-answer {
+  font-weight: var(--font-weight-medium);
+}
+
+.result-item .correct-answer {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-success); /* Green for correct answer */
+}
+
+.status-indicator {
+  font-weight: var(--font-weight-bold);
+  margin-top: var(--space-xs);
+  display: inline-block; /* Allows padding/margin */
+  padding: var(--space-xxs) var(--space-xs);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+.status-indicator.correct {
+  color: var(--color-success);
+  background-color: rgba(40, 167, 69, 0.1);
+  border: 1px solid var(--color-success);
+}
+
+.status-indicator.incorrect {
+  color: var(--color-error);
+  background-color: rgba(220, 53, 69, 0.1);
+  border: 1px solid var(--color-error);
+}
+
+.result-navigation-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.result-button {
+  background-color: var(--color-primary);
+  color: var(--color-background-card);
+  padding: var(--space-md) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.2s ease-in-out;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-button:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Specific button styles for visual distinction */
+.start-new-quiz-button {
+  background-color: var(--color-secondary);
+}
+.start-new-quiz-button:hover {
+  background-color: #00999f;
+}
+
+.view-dashboard-button {
+  background-color: var(--color-text-medium);
+}
+.view-dashboard-button:hover {
+  background-color: #555;
+}
+
+.back-home-button {
+  background-color: var(--color-text-light);
+}
+.back-home-button:hover {
+  background-color: #7f8c8d;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .result-container {
+    margin: var(--space-lg);
+    padding: var(--space-lg);
+  }
+  .result-header {
+    font-size: var(--font-size-3xl);
+  }
+  .score-summary {
+    font-size: var(--font-size-2xl);
+  }
+  .result-button {
+    width: 100%;
+    margin-bottom: var(--space-sm);
+  }
+}

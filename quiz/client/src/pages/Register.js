@@ -17,6 +17,7 @@ function RegistrationForm() {
       });
       const data = await res.json();
       if (res.ok) {
+        localStorage.setItem('user', JSON.stringify(data.user));
         setMessage('Registration successful! Please log in.');
         // Optionally clear the form after successful registration
         setForm({ name: '', email: '', password: '', role: 'student' });

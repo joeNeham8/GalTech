@@ -10,12 +10,15 @@ import Navbar from './components/Navbar.js';
 import Home from './pages/HomePage.js';
 import Login from './pages/LoginPage.js';
 import Register from './pages/Register.js';
-import Quiz from './pages/Quiz';
+import Quiz from './pages/Quiz/Quiz.js';
+import QuizQuestions from './pages/Quiz/QuizQuestions.js';
 import Result from './pages/Result';
 import Dashboard from './pages/Dashboard';
 import AdminLayout from './pages/admin/AdminLayout.js';
 import CategoriesPage from './pages/admin/CategoriesPage.js';
 import QuestionsPage from './pages/admin/QuestionsPage.js';
+
+import './css/App.css';
 
 function App() {
   const [userRole, setUserRole] = useState('');
@@ -50,7 +53,9 @@ function App() {
         <Route path="/register" element={<Register />} />
 
         {/* Protected Routes */}
-        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/quiz" element={<Quiz />}>
+          <Route path=":categoryId/questions" element={<QuizQuestions />} /> 
+        </Route>
         <Route path="/result" element={<Result />} />
         <Route path="/dashboard" element={<Dashboard />} />
 

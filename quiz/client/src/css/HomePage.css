@@ -1,75 +1,145 @@
-/* HomePage.css */
+/* src/css/HomePage.css */
 
 .home-container {
+  font-family: var(--font-family-base);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl); /* Stronger shadow for main page container */
+  text-align: center;
+  background-color: var(--color-background-card); /* White background */
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  background-color: #f8f9fa;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: var(--space-3xl) auto;
+  border: 1px solid var(--color-border-light);
+  overflow: hidden;
 }
 
 .home-header {
-  text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: var(--space-2xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .home-header h1 {
-  color: #2d7a2d;
-  font-size: 2rem;
+  color: var(--color-text-dark);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--space-xs);
 }
 
-.aptitude-buttons {
+.home-subtitle {
+  color: var(--color-text-medium);
+  font-size: var(--font-size-lg);
+  line-height: 1.5;
+}
+
+/* Loading, Error, No Categories Messages */
+.loading-message, .error-message, .no-categories-message {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-medium);
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--color-background-light);
+  border: 1px solid var(--color-border-light);
+  display: inline-block;
+}
+.error-message {
+  color: var(--color-error);
+  font-weight: var(--font-weight-medium);
+  background-color: rgba(220, 53, 69, 0.1);
+  border-color: var(--color-error);
+}
+
+/* Categories Grid Layout */
+.categories-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Exactly 3 per row */
-  gap: 20px;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl); /* Increased gap for more breathing room */
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-2xl);
 }
 
-.aptitude-buttons button {
-  width: 100%;
-  max-width: 300px;
-  background-color: #ffffff;
-  color: #2d7a2d;
-  border: 2px solid #2d7a2d;
-  padding: 16px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+.category-card {
+  background-color: var(--color-background-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md); /* Softer shadow for cards */
+  padding: var(--space-lg);
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg); /* More prominent shadow on hover */
+}
+
+.category-card-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-primary); /* Use primary color for underline */
+}
+
+.category-sub-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.category-sub-items li {
+  margin-bottom: var(--space-xxs); /* Smaller space between list items */
+}
+
+.sub-item-link {
+  color: var(--color-text-medium); /* Medium text color for sub-items */
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  transition: color 0.2s ease;
+  display: block;
+  padding: var(--space-xxs) 0;
+}
+
+.sub-item-link:hover {
+  color: var(--color-primary);
+  text-decoration: none; /* No underline on hover as per Figma often */
+}
+
+.sub-item-arrow {
+  margin-right: var(--space-xs);
+  color: var(--color-primary); /* Primary color for arrow */
+  font-weight: var(--font-weight-bold);
+}
+
+/* Admin Panel Button Styling */
+.admin-actions-section {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border-light);
+  text-align: center;
+}
+
+.admin-panel-button {
+  background-color: var(--color-secondary); /* Using secondary color for admin button for distinction */
+  color: var(--color-background-card);
+  padding: var(--space-md) var(--space-xl);
+  border: none;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: var(--shadow-md);
 }
 
-.aptitude-buttons button:hover {
-  background-color: #2d7a2d;
-  color: #ffffff;
+.admin-panel-button:hover {
+  background-color: #00999f; /* Slightly darker secondary */
   transform: translateY(-2px);
-}
-
-.error {
-  color: red;
-  font-weight: bold;
-  text-align: center;
-}
-
-@media screen and (max-width: 960px) {
-  .aptitude-buttons {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .home-header h1 {
-    font-size: 1.5rem;
-  }
-
-  .aptitude-buttons {
-    grid-template-columns: 1fr;
-  }
-
-  .aptitude-buttons button {
-    font-size: 0.95rem;
-    padding: 14px;
-  }
+  box-shadow: var(--shadow-lg);
 }

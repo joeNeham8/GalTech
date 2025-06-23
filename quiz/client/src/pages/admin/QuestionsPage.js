@@ -59,9 +59,10 @@ function QuestionsPage({ userRole, token, onBackToCategories }) {
           'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-          text: questionText,
+          questionText: questionText,
           options: options,
-          correctAnswer: options[correctOptionIndex]
+          correctAnswer: options[correctOptionIndex],
+          category: categoryId 
         })
       });
       const data = await response.json();
@@ -75,7 +76,6 @@ function QuestionsPage({ userRole, token, onBackToCategories }) {
         setMessage(`Error: ${data.message || 'Failed to add question.'}`);
       }
     } catch (err) {
-      console.error('Error adding question:', err);
       setMessage('Network error or server is unreachable.');
     }
   };
@@ -119,7 +119,7 @@ function QuestionsPage({ userRole, token, onBackToCategories }) {
             <ul>
               {questions.map((q) => (
                 <li key={q._id} className="question-item">
-                  <p><strong>Q:</strong> {q.text}</p>
+                  <p><strong>Q:</strong> {q.questionText}</p>
                   <ol type="A">
                     {q.options.map((opt, i) => (
                       <li key={i}>{opt}</li>
