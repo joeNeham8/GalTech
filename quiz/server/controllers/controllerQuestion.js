@@ -26,12 +26,12 @@ export const getAllQuestions = async (req, res) => {
     if (difficulty) filter.difficulty = difficulty;
 
     const questions = await Question.find(filter);
-    res.status(200).json(questions);
+    res.status(200).json({questions});
   } catch (err) {
     res.status(500).json({ message: 'Error fetching questions', error: err.message });
   }
 };
-
+  
 // GET single question by ID
 export const getQuestionById = async (req, res) => {
   try {
