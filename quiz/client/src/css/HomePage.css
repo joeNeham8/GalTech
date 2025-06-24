@@ -25,7 +25,22 @@
   font-weight: var(--font-weight-extrabold);
   margin-bottom: var(--space-xs);
 }
+.home-intro ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 1em 0 1em 0;
+}
 
+.home-intro li {
+  margin-bottom: 0.5em;
+  font-size: 1.08rem;
+  display: flex;
+  align-items: center;
+}
+.user-name {
+  color: #007bff;
+  font-weight: bold;
+}
 .home-subtitle {
   color: var(--color-text-medium);
   font-size: var(--font-size-lg);

@@ -1,0 +1,89 @@
+.dashboard-container {
+  max-width: 500px;
+  margin: 2em auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #eee;
+  padding: 2em;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.dashboard-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1.2em;
+  text-align: center;
+}
+
+.dashboard-container h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3949ab;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+
+.dashboard-container strong {
+  color: #2c3e50;
+}
+
+.dashboard-container > div {
+  margin-bottom: 1.5em;
+  font-size: 1.08rem;
+}
+
+.dashboard-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+  background: #fafbfc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px #eee;
+}
+
+.dashboard-container th, .dashboard-container td {
+  padding: 0.7em 0.5em;
+  text-align: left;
+}
+
+.dashboard-container th {
+  background: #f4f6fb;
+  border-bottom: 2px solid #e0e0e0;
+  font-weight: 600;
+  color: #3949ab;
+}
+
+.dashboard-container td {
+  border-bottom: 1px solid #e0e0e0;
+  color: #34495e;
+}
+
+.dashboard-container tr:last-child td {
+  border-bottom: none;
+}
+
+.dashboard-container p {
+  margin: 1em 0;
+  font-size: 1.08rem;
+}
+
+.dashboard-container .error {
+  color: #e53935;
+  background: #ffebee;
+  padding: 0.7em 1em;
+  border-radius: 6px;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .dashboard-container {
+    padding: 1em 0.5em;
+    max-width: 98vw;
+  }
+  .dashboard-container table, .dashboard-container th, .dashboard-container td {
+    font-size: 0.98rem;
+  }
+}

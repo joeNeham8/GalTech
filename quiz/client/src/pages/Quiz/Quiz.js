@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import '../../css/Quiz.css'; // Path for CSS, assuming Quiz.js is in src/pages/Quiz/
-import QuizQuestions from './QuizQuestions'; // Path for QuizQuestions, assuming it's in the same directory
+import '../../css/Quiz.css';
+import QuizQuestions from './QuizQuestions';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
 function Quiz() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
-
+  const [selectedSubCategory, setSelectedSubCategory] = useState('');
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
-  // State to manage quiz flow (e.g., 'category_selection', 'quiz_active', 'quiz_result')
-  const [quizState, setQuizState] = useState('category_selection'); // New state
+  const [quizState, setQuizState] = useState('category_selection');
 
   // Fetch categories on mount
   useEffect(() => {
@@ -37,43 +35,51 @@ function Quiz() {
     fetchCategories();
   }, []);
 
-  // Fetch questions when a category is selected
+  // Fetch questions when a subcategory is selected
   useEffect(() => {
-
-    if (!selectedCategory) return; // Don't fetch if no category is selected
+    if (!selectedCategory || !selectedSubCategory) return;
     const fetchQuestions = async () => {
       setLoading(true);
       setError('');
       try {
-        // Use 'categoryId' as the query parameter, as per your backend
-        const response = await fetch(`${API_BASE_URL}/questions?category=${selectedCategory}`);
+        const response = await fetch(
+          `${API_BASE_URL}/questions/${selectedCategory}/subcategories/${encodeURIComponent(selectedSubCategory)}/questions`
+        );
         const data = await response.json();
         if (response.ok) {
-          // The backend returns an object with a 'questions' array inside
           setQuestions(data.questions || []);
-          setQuizState('quiz_active'); // Move to quiz active state after fetching questions
+          setQuizState('quiz_active');
         } else {
           setError(data.message || 'Failed to fetch questions.');
-          setQuestions([]); // Clear questions on error
-          setQuizState('category_selection'); // Go back to category selection
+          setQuestions([]);
+          setQuizState('category_selection');
         }
       } catch (err) {
         setError('Network error or server is unreachable.');
-        setQuestions([]); // Clear questions on network error
-        setQuizState('category_selection'); // Go back to category selection
+        setQuestions([]);
+        setQuizState('category_selection');
       } finally {
         setLoading(false);
       }
     };
     fetchQuestions();
-  }, [selectedCategory]); // Re-run when selectedCategory changes
+  }, [selectedCategory, selectedSubCategory]);
 
-  // Function to handle moving back to category selection
+  // Back to category selection
   const handleBackToCategories = () => {
     setSelectedCategory('');
+    setSelectedSubCategory('');
     setQuestions([]);
     setError('');
     setQuizState('category_selection');
+  };
+
+  // Back to subcategory selection
+  const handleBackToSubCategories = () => {
+    setSelectedSubCategory('');
+    setQuestions([]);
+    setError('');
+    setQuizState('subcategory_selection');
   };
 
   return (
@@ -86,20 +92,65 @@ function Quiz() {
       {!loading && quizState === 'category_selection' && (
         <div className="quiz-category-selection">
           <h2 className="quiz-sub-header">Select a Category:</h2>
-          {categories.length === 0 && !loading && !error && <p className="quiz-no-categories">No categories available.</p>}
-          <div className="quiz-category-buttons">
-            {categories.map(cat => (
-              <button
+          {categories.length === 0 && !loading && !error && (
+            <p className="quiz-no-categories">No categories available.</p>
+          )}
+          <div className="quiz-category-list">
+            {categories.map((cat) => (
+              <div
                 key={cat._id}
+                className="quiz-category-card"
                 onClick={() => {
-                  console.log('Selected category:', cat._id); // <-- Add this line
                   setSelectedCategory(cat._id);
+                  setQuizState('subcategory_selection');
                 }}
-                className="quiz-category-button"
               >
-                {cat.name}
-              </button>
+                <div className="quiz-category-title">{cat.name}</div>
+                <div className="quiz-category-desc">{cat.description}</div>
+                {cat.subcategories && cat.subcategories.length > 0 && (
+                  <div className="quiz-subcategory-links">
+                    {cat.subcategories.map((subcat, idx) => (
+                      <button
+                        key={idx}
+                        className="quiz-subcategory-link"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedCategory(cat._id);
+                          setSelectedSubCategory(subcat);
+                        }}
+                      >
+                        {subcat}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* Subcategory Selection View */}
+      {!loading && quizState === 'subcategory_selection' && selectedCategory && (
+        <div className="quiz-subcategory-selection">
+          <button className="quiz-back-button" onClick={handleBackToCategories}>
+            Back to Categories
+          </button>
+          <h2 className="quiz-sub-header">
+            Select a Subcategory:
+          </h2>
+          <div className="quiz-subcategory-list">
+            {categories
+              .find((cat) => cat._id === selectedCategory)
+              ?.subcategories?.map((subcat, idx) => (
+                <button
+                  key={idx}
+                  className="quiz-subcategory-link"
+                  onClick={() => setSelectedSubCategory(subcat)}
+                >
+                  {subcat}
+                </button>
+              ))}
           </div>
         </div>
       )}
@@ -107,11 +158,20 @@ function Quiz() {
       {/* Questions Display View */}
       {!loading && quizState === 'quiz_active' && (
         <div className="quiz-questions-display">
-          <h2 className="quiz-sub-header">Questions for {categories.find(cat => cat._id === selectedCategory)?.name}</h2>
-          {questions.length === 0 && !loading && !error && <p className="quiz-no-questions">No questions available for this category.</p>}
+          <button className="quiz-back-button" onClick={handleBackToSubCategories}>
+            Back to Subcategories
+          </button>
+          <h2 className="quiz-sub-header">
+            Questions for{' '}
+            {categories.find((cat) => cat._id === selectedCategory)?.name} &gt;{' '}
+            {selectedSubCategory}
+          </h2>
+          {questions.length === 0 && !loading && !error && (
+            <p className="quiz-no-questions">
+              No questions available for this subcategory.
+            </p>
+          )}
           <QuizQuestions questions={questions} />
-          <button onClick={handleBackToCategories} className="quiz-back-button">Back to Categories</button>
-          {/* You'll add submit quiz button here later */}
         </div>
       )}
     </div>
@@ -119,13 +179,3 @@ function Quiz() {
 }
 
 export default Quiz;
-
-
-
-
-
-
-
-
-
-

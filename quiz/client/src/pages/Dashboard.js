@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../css/Dashboard.css'; 
 
 function Dashboard() {
   const [user, setUser] = useState(null);
@@ -16,9 +17,9 @@ function Dashboard() {
   }
 
   return (
-    <div className="dashboard-container" style={{ maxWidth: 500, margin: '2em auto', background: '#fff', borderRadius: 8, boxShadow: '0 2px 8px #eee', padding: '2em' }}>
+    <div className="dashboard-container">
       <h2>User Profile</h2>
-      <div style={{ marginBottom: '1.5em' }}>
+      <div>
         <strong>Name:</strong> {user.name}<br />
         <strong>Email:</strong> {user.email}<br />
         <strong>Role:</strong> {user.role}<br />

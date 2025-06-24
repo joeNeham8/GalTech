@@ -1,24 +1,103 @@
 .questions-container {
   padding: 20px;
+  max-width: 700px;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px #eee;
 }
 .questions-header {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 18px;
+  font-weight: bold;
+  color: #2d2d2d;
+  text-align: center;
 }
 .input-field, .select-field, .textarea-field {
   display: block;
   width: 100%;
   margin: 8px 0;
-  padding: 8px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 .add-button, .delete-button, .back-button {
-  margin: 10px 5px;
-  padding: 10px 20px;
+  margin: 10px 5px 0 0;
+  padding: 10px 22px;
   cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.add-button {
+  background: #43a047;
+  color: #fff;
+}
+.add-button:hover {
+  background: #388e3c;
+}
+.delete-button {
+  background: #e53935;
+  color: #fff;
+}
+.delete-button:hover {
+  background: #b71c1c;
+}
+.back-button {
+  background: #3949ab;
+  color: #fff;
+}
+.back-button:hover {
+  background: #283593;
 }
 .questions-message {
-  color: green;
+  color: #2e7d32;
+  background: #e8f5e9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 .questions-error {
-  color: red;
+  color: #c62828;
+  background: #ffebee;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.questions-list ul {
+  list-style: none;
+  padding: 0;
+}
+.question-item {
+  background: #f7f7f7;
+  border-radius: 6px;
+  margin-bottom: 18px;
+  padding: 16px;
+  box-shadow: 0 1px 4px #eee;
+}
+.question-item p {
+  margin: 0 0 8px 0;
+}
+.question-item ol {
+  margin: 0 0 8px 20px;
+}
+.label {
+  margin-top: 10px;
+  font-weight: 500;
+}
+.admin-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+.questions-sub-header {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #3949ab;
 }

@@ -84,6 +84,17 @@ function App() {
               />
             }
           />
+
+         <Route
+            path="/adminLayout/categories/:categoryId/subcategories/:subCategoryName/questions"
+            element={
+              <QuestionsPage
+                userRole={userRole}
+                token={token}
+                onBackToCategories={() => Navigate('/adminLayout/categories')}
+              />
+            }
+          />
         </Route>
 
         {/* Catch-All Route */}

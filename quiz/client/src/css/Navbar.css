@@ -1,89 +1,4 @@
-/* .navbar {
-  background-color: #343a40; 
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%; 
-  box-sizing: border-box; 
-}
 
-.navbar-brand { 
-  display: flex;
-  flex-direction: row; 
-  align-items: flex-start; 
-}
-
-.navbar-logo {
-  height: 40px; 
-  width: 200px; 
-  margin-right: 0; 
-  margin-bottom: 5px; 
-  border-radius: 5px; 
-}
-
-.navbar-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-left: 50px;;
-}
-
-.navbar-links {
-  list-style: none; 
-  border: 50px;
-  margin: 10px;
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.navbar-links li {
-  margin-left: 20px;
-  font-size: 1rem;
-}
-
-
-
-.navbar-links button {
-  background-color: #f8f9fa; 
-  color: #343a40; 
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease; 
-}
-
-.navbar-links button:hover {
-  background-color: black;
-}
-
-.navbar-links a,
-.navbar-links .nav-button {
-  display: inline-block;
-  padding: 8px 16px;
-  margin: 0 6px;
-  background-color: #1976d2;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.2s;
-  cursor: pointer;
-}
-
-.navbar-links a:hover,
-.navbar-links .nav-button:hover {
-  background-color: #1565c0;
-  color: #fff;
-} */
-
-
-/* src/components/Navbar.css */
 
 .navbar {
   background-color: var(--color-background-card); /* White background for Navbar */
@@ -179,33 +94,42 @@
   text-decoration: none;
 }
 
+/* Add to c:\Users\91790\Desktop\GalTech\quiz\client\src\css\Navbar.css */
+.navbar-dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-/* Hamburger
-.hamburger {
+.navbar-dropdown-content {
   display: none;
-  flex-direction: column;
-  cursor: pointer;
-  padding: 10px;
+  position: absolute;
+  background-color: #fff;
+  min-width: 140px;
+  box-shadow: 0 2px 8px #eee;
+  z-index: 1001;
+  right: 0;
+  border-radius: 6px;
+  margin-top: 8px;
 }
 
-.hamburger .bar {
-  height: 3px;
-  width: 25px;
-  background-color: black;
-  margin: 4px 0;
-  border-radius: 2px;
-  transition: 0.3s;
+.navbar-dropdown:hover .navbar-dropdown-content,
+.navbar-dropdown:focus-within .navbar-dropdown-content {
+  display: block;
 }
 
-.hamburger.open .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.navbar-dropdown-content a {
+  color: #3949ab;
+  padding: 12px 18px;
+  text-decoration: none;
+  display: block;
+  border-radius: 6px;
+  transition: background 0.2s;
 }
-.hamburger.open .bar:nth-child(2) {
-  opacity: 0;
+
+.navbar-dropdown-content a:hover {
+  background: #f4f6fb;
 }
-.hamburger.open .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-} */
+
 
 /* Responsive */
 @media (max-width: 600px) {

@@ -1,122 +1,124 @@
-/* src/css/Result.css */
-
 .result-container {
-  font-family: var(--font-family-base);
-  max-width: 900px; /* Wider to accommodate detailed results */
-  margin: var(--space-3xl) auto;
-  padding: var(--space-2xl);
-  background-color: var(--color-background-card);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-xl);
-  text-align: center;
-  border: 1px solid var(--color-border-light);
+  font-family: 'Inter', Arial, sans-serif;
+  max-width: 600px;
+  margin: 48px auto;
+  padding: 36px 32px 32px 32px;
+  background-color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(44, 62, 80, 0.10);
+  text-align: left;
+  border: 1px solid #e0e0e0;
 }
 
 .result-header {
-  color: var(--color-text-dark);
-  margin-bottom: var(--space-xl);
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-extrabold);
+  color: #2c3e50;
+  margin-bottom: 32px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
 .score-summary {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  margin: var(--space-xl) 0 var(--space-2xl) 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3949ab;
+  margin: 24px 0 32px 0;
   line-height: 1.2;
+   text-align: center;
 }
 
 .score-summary strong {
-  color: var(--color-primary); /* Highlight total score */
+  color: #3949ab;
 }
 
 .detailed-results-list {
   list-style: none;
   padding: 0;
-  margin-top: var(--space-lg);
-  border-top: 1px solid var(--color-border-light); /* Separator for details */
-  padding-top: var(--space-lg);
+  margin-top: 24px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 24px;
 }
 
 .result-item {
-  background-color: var(--color-background-light); /* Light background for each question item */
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-  margin-bottom: var(--space-md);
+  background-color: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 18px 20px 14px 20px;
+  margin-bottom: 18px;
   text-align: left;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 6px #eee;
+  transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 100%;
 }
 
 .result-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 4px 16px #d1d1d1;
 }
 
 .result-item strong {
-  color: var(--color-text-dark);
-  font-size: var(--font-size-lg);
-  display: block; /* Ensures question text is on its own line */
-  margin-bottom: var(--space-xs);
+  color: #2c3e50;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 6px;
 }
 
 .result-item p {
-  margin: var(--space-xxs) 0;
-  font-size: var(--font-size-base);
-  color: var(--color-text-medium);
+  margin: 4px 0;
+  font-size: 1rem;
+  color: #34495e;
 }
 
 .result-item .user-answer {
-  font-weight: var(--font-weight-medium);
+  font-weight: 500;
 }
 
 .result-item .correct-answer {
-  font-weight: var(--font-weight-medium);
-  color: var(--color-success); /* Green for correct answer */
+  font-weight: 500;
+  color: #43a047;
 }
 
 .status-indicator {
-  font-weight: var(--font-weight-bold);
-  margin-top: var(--space-xs);
-  display: inline-block; /* Allows padding/margin */
-  padding: var(--space-xxs) var(--space-xs);
-  border-radius: var(--radius-sm);
-  font-size: var(--font-size-sm);
+  font-weight: 700;
+  margin-top: 8px;
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 .status-indicator.correct {
-  color: var(--color-success);
-  background-color: rgba(40, 167, 69, 0.1);
-  border: 1px solid var(--color-success);
+  color: #43a047;
+  background-color: #e8f5e9;
+  border: 1px solid #43a047;
 }
 
 .status-indicator.incorrect {
-  color: var(--color-error);
-  background-color: rgba(220, 53, 69, 0.1);
-  border: 1px solid var(--color-error);
+  color: #e53935;
+  background-color: #ffebee;
+  border: 1px solid #e53935;
 }
 
 .result-navigation-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-md);
-  margin-top: var(--space-xl);
+  gap: 18px;
+  margin-top: 32px;
 }
 
 .result-button {
-  background-color: var(--color-primary);
-  color: var(--color-background-card);
-  padding: var(--space-md) var(--space-lg);
+  background-color: #3949ab;
+  color: #fff;
+  padding: 12px 32px;
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 8px;
   cursor: pointer;
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
-  transition: all 0.2s ease-in-out;
-  box-shadow: var(--shadow-sm);
+  font-size: 1.08rem;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 1px 4px #e0e0e0;
   text-decoration: none;
   display: inline-flex;
   justify-content: center;
@@ -124,48 +126,26 @@
 }
 
 .result-button:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  background-color: #283593;
+  transform: translateY(-1px) scale(1.03);
 }
 
-/* Specific button styles for visual distinction */
-.start-new-quiz-button {
-  background-color: var(--color-secondary);
-}
-.start-new-quiz-button:hover {
-  background-color: #00999f;
-}
-
-.view-dashboard-button {
-  background-color: var(--color-text-medium);
-}
-.view-dashboard-button:hover {
-  background-color: #555;
-}
-
-.back-home-button {
-  background-color: var(--color-text-light);
-}
-.back-home-button:hover {
-  background-color: #7f8c8d;
-}
-
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .result-container {
-    margin: var(--space-lg);
-    padding: var(--space-lg);
+    margin: 18px 4px;
+    padding: 18px 4px;
   }
   .result-header {
-    font-size: var(--font-size-3xl);
+    font-size: 1.6rem;
   }
   .score-summary {
-    font-size: var(--font-size-2xl);
+    font-size: 1.1rem;
+  }
+  .result-item {
+    padding: 12px 6px 10px 6px;
   }
   .result-button {
     width: 100%;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 10px;
   }
 }

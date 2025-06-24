@@ -76,3 +76,34 @@ export const deleteQuestion = async (req, res) => {
     res.status(500).json({ message: 'Error deleting question', error: err.message });
   }
 };
+
+export const getQuestionsByCategoryAndSubcategory = async (req, res) => {
+  try {
+    const { categoryId, subCategoryName } = req.params;
+    const questions = await Question.find({
+      category: categoryId,
+      subcategory: subCategoryName
+    });
+    res.json({ questions });
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching questions.', error: error.message });
+  }
+};
+
+export const addQuestionToSubcategory = async (req, res) => {
+  try {
+    const { categoryId, subCategoryName } = req.params;
+    const { questionText, options, correctAnswer } = req.body;
+    const question = new Question({
+      questionText,
+      options,
+      correctAnswer,
+      category: categoryId,
+      subcategory: subCategoryName
+    });
+    await question.save();
+    res.status(201).json({ message: 'Question added!', question });
+  } catch (error) {
+    res.status(500).json({ message: 'Error adding question.', error: error.message });
+  }
+};

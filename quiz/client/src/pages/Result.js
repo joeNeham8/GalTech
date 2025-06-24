@@ -9,19 +9,25 @@ function Result() {
 
   return (
     <div className="result-container">
-      <h2>Quiz Results</h2>
-      <p>Your Score: <strong>{score} / {total}</strong></p>
-      <ul>
+      <h2 className="result-header">Quiz Results</h2>
+      <p className="score-summary">Your Score: <strong>{score} / {total}</strong></p>
+      <ul className="detailed-results-list">
         {results.map((res, idx) => (
-          <li key={res.questionId}>
-            <strong>Q{idx + 1}:</strong> {res.questionText}<br />
-            Your Answer: {res.selected} <br />
-            Correct Answer: {res.correct} <br />
-            {res.isCorrect ? <span style={{color: 'green'}}>Correct</span> : <span style={{color: 'red'}}>Incorrect</span>}
+          <li className="result-item" key={res.questionId}>
+            <strong>Q{idx + 1}:</strong> {res.questionText}
+            <p className="user-answer">Your Answer: {res.selected}</p>
+            <p className="correct-answer">Correct Answer: {res.correct}</p>
+            {res.isCorrect ? (
+              <span className="status-indicator correct">Correct</span>
+            ) : (
+              <span className="status-indicator incorrect">Incorrect</span>
+            )}
           </li>
         ))}
       </ul>
-      <button onClick={() => navigate('/Quiz')}>categories</button>
+      <div className="result-navigation-buttons">
+        <button className="result-button" onClick={() => navigate('/Quiz')}>categories</button>
+      </div>
     </div>
   );
 }

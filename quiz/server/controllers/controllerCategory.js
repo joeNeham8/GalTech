@@ -75,3 +75,26 @@ export const deleteCategory = async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error while deleting category.' });
   }
 };
+
+// Add a subcategory to a category
+export const addSubCategory = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { subcategory } = req.body;
+    if (!subcategory) {
+      return res.status(400).json({ message: 'Subcategory name is required.' });
+    }
+    const category = await Category.findById(id);
+    if (!category) {
+      return res.status(404).json({ message: 'Category not found.' });
+    }
+    if (category.subcategories.includes(subcategory)) {
+      return res.status(400).json({ message: 'Subcategory already exists.' });
+    }
+    category.subcategories.push(subcategory);
+    await category.save();
+    res.status(201).json({ message: 'Subcategory added!', subcategories: category.subcategories });
+  } catch (error) {
+    res.status(500).json({ message: 'Error adding subcategory.', error: error.message });
+  }
+};

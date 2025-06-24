@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // <-- Add this import
+import { useParams, useNavigate } from 'react-router-dom';
 import '../../css/QuestionsPage.css';
-import { useNavigate } from 'react-router-dom';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
 function QuestionsPage({ userRole, token, onBackToCategories }) {
-  const { categoryId } = useParams();
-    const navigate = useNavigate(); // <-- Use useParams to get categoryId from URL
+  // Get both categoryId and subCategoryName from the URL
+  const { categoryId, subCategoryName } = useParams();
+  const navigate = useNavigate();
 
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,14 +19,18 @@ function QuestionsPage({ userRole, token, onBackToCategories }) {
   const [options, setOptions] = useState(['', '', '', '']);
   const [correctOptionIndex, setCorrectOptionIndex] = useState(0);
 
+  // Fetch questions for this category and subcategory
   const fetchQuestions = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${API_BASE_URL}/questions/${categoryId}/questions`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-      });
+      const response = await fetch(
+        `${API_BASE_URL}/questions/${categoryId}/subcategories/${encodeURIComponent(subCategoryName)}/questions`,
+        {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         setQuestions(data.questions || []);
@@ -43,7 +47,8 @@ function QuestionsPage({ userRole, token, onBackToCategories }) {
 
   useEffect(() => {
     fetchQuestions();
-  }, [categoryId]);
+    // eslint-disable-next-line
+  }, [categoryId, subCategoryName]);
 
   const handleAddQuestion = async () => {
     setMessage('');
@@ -52,19 +57,23 @@ function QuestionsPage({ userRole, token, onBackToCategories }) {
       return;
     }
     try {
-      const response = await fetch(`${API_BASE_URL}/questions/${categoryId}/questions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          questionText: questionText,
-          options: options,
-          correctAnswer: options[correctOptionIndex],
-          category: categoryId 
-        })
-      });
+      const response = await fetch(
+        `${API_BASE_URL}/questions/${categoryId}/subcategories/${encodeURIComponent(subCategoryName)}/questions`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            questionText: questionText,
+            options: options,
+            correctAnswer: options[correctOptionIndex],
+            category: categoryId,
+            subcategory: subCategoryName
+          })
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         setMessage(`Success: ${data.message}`);
@@ -105,7 +114,9 @@ function QuestionsPage({ userRole, token, onBackToCategories }) {
 
   return (
     <div className="questions-container">
-      <h1 className="questions-header">Questions</h1>
+      <h1 className="questions-header">
+        Questions for {subCategoryName ? `"${subCategoryName}"` : 'Subcategory'}
+      </h1>
 
       {message && <p className="questions-message">{message}</p>}
       {loading && <p>Loading questions...</p>}
@@ -178,9 +189,9 @@ function QuestionsPage({ userRole, token, onBackToCategories }) {
         </div>
       )}
 
-     <button onClick={() => navigate('/adminLayout/categories')} className="back-button">
-    Back to Categories
-  </button>
+      <button onClick={() => navigate('/adminLayout/categories')} className="back-button">
+        Back to Categories
+      </button>
     </div>
   );
 }

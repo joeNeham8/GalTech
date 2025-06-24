@@ -64,9 +64,9 @@ function RegistrationForm() {
           value={form.role}
           onChange={handleChange}
           className="input-field"
+          disabled // Prevent user from changing role
         >
           <option value="student">Student</option>
-          <option value="admin">Admin</option>
         </select>
         <button type="submit" className="registration-button">Register</button>
         {message && (
@@ -80,48 +80,3 @@ function RegistrationForm() {
 }
 
 export default RegistrationForm;
-
-
-
-
-// import { useState } from 'react';
-// import '../css/Register.css'; 
-
-// function RegistrationForm() {
-//   const [form, setForm] = useState({ name: '', email: '', password: '', role: 'student' });
-//   const [message, setMessage] = useState('');
-
-//   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
-
-//   const handleSubmit = async e => {
-//     e.preventDefault();
-//     try {
-//       const res = await fetch('http://localhost:5000/api/users/register', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(form),
-//       });
-//       const data = await res.json();
-//       if (res.ok) setMessage('Registration successful! Please log in.');
-//       else setMessage(data.message || 'Registration failed.');
-//     } catch {
-//       setMessage('Server error.');
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <input name="name" value={form.name} onChange={handleChange} placeholder="Name" required />
-//       <input name="email" value={form.email} onChange={handleChange} placeholder="Email" required />
-//       <input name="password" type="password" value={form.password} onChange={handleChange} placeholder="Password" required />
-//       <select name="role" value={form.role} onChange={handleChange}>
-//         <option value="student">Student</option>
-//         <option value="admin">Admin</option>
-//       </select>
-//       <button type="submit">Register</button>
-//       <div>{message}</div>
-//     </form>
-//   );
-// }
-
-// export default RegistrationForm;

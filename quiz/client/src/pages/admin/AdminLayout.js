@@ -20,12 +20,12 @@ function AdminLayout({ userName, userRole }) {
         {/* <Link to="/adminLayout/categories/[categoryId]/questions" className="admin-nav-button" >
           Manage Questions
         </Link> */}
-        <button className="admin-nav-button" onClick={() => alert('View Student Attempts - Coming Soon!')}>
-          View Student Attempts
+        {/* <button className="admin-nav-button" onClick={() => alert('View Student Attempts - Coming Soon!')}>
+         Attempts View Student 
         </button>
         <button className="admin-nav-button" onClick={() => alert('View Scores & Leaderboard - Coming Soon!')}>
           View Scores & Leaderboard
-        </button>
+        </button> */}
       </div>
 
       <Link to="/" className="admin-back-button">Back to Home</Link>

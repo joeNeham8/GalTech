@@ -49,3 +49,18 @@ export const submitQuiz = async (req, res) => {
     });
   }
 };
+
+// ...existing imports and code...
+
+export const getUserResults = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const results = await Result.find({ user: userId }).sort({ date: -1 });
+    res.json({ results });
+  } catch (err) {
+    res.status(500).json({
+      message: 'Error fetching results',
+      error: err.message,
+    });
+  }
+};
